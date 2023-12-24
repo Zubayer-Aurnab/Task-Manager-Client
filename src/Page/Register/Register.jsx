@@ -1,10 +1,11 @@
 import Lottie from "lottie-react";
-import login from "../../../public/login.json"
-import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { Link } from "react-router-dom";
+import register from "../../../public/register.json"
 
-const Login = () => {
-    const handleSubmitLogin = () => {
+
+const Register = () => {
+    const handleSubmitRegister = () => {
 
     }
     return (
@@ -16,7 +17,7 @@ const Login = () => {
                             <div className="flex flex-col justify-center  p-1 px-10  rounded-lg opacity-95">
 
                                 <Lottie
-                                    animationData={login}
+                                    animationData={register}
 
 
                                 />
@@ -24,11 +25,33 @@ const Login = () => {
                             <div>
                                 <div className="w-full lg:max-w-xl p-6 space-y-8 sm:p-8  rounded-lg shadow-xl bg-gradient-to-r from-primary1 via-primary3 to-primary4">
                                     <h2 className="text-2xl font-extrabold text-black">
-                                        Log in to  ContestHub
+                                        Register to  ContestHub
                                     </h2>
                                     <form
-                                        onSubmit={handleSubmitLogin}
+                                        onSubmit={handleSubmitRegister}
                                         className="mt-8 space-y-6" action="#">
+                                        <div>
+                                            <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"> Full Name</label>
+                                            <input
+                                                type="text"
+                                                name="name"
+                                                id="name"
+                                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="Full Name"
+                                                required
+                                            />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"> Photo URL</label>
+                                            <input
+                                                type="text"
+                                                name="photo"
+                                                id="photo"
+                                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="Photo URL"
+                                                required
+                                            />
+                                        </div>
                                         <div>
                                             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Your email</label>
                                             <input
@@ -57,7 +80,7 @@ const Login = () => {
                                                 type="submit"
                                                 className="w-full px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             >
-                                                Login to your account
+                                                Register your account
                                             </button>
 
                                             <button
@@ -65,16 +88,12 @@ const Login = () => {
 
                                                 className="w-full px-5 py-3 text-base font-medium text-center text-black bg-white rounded-lg hover:bg-white focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-white dark:hover:bg-white dark:focus:ring-white flex items-center justify-center gap-4 "
                                             >
-                                                Login with Google
+                                                Register with Google
                                                 <FcGoogle className='text-xl' />
                                             </button>
-
-
-
-
                                         </div>
                                         <div className="text-sm font-medium text-gray-900 dark:text-black">
-                                            Not registered yet? <Link to={'/register'} className="text-primary0 hover:underline font-extrabold ">Create account</Link>
+                                            Already have an account? <Link to={'/login'} className="text-primary0 hover:underline font-extrabold "> Login</Link>
                                         </div>
                                     </form>
                                 </div>
@@ -87,4 +106,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
