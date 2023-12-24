@@ -1,3 +1,5 @@
+import { Outlet } from "react-router-dom"
+import NavBar from "./Components/Shared/NavBar"
 
 
 function App() {
@@ -5,7 +7,9 @@ function App() {
 
   return (
     <>
-     <h1>Hello World</h1>
+      <NavBar />
+      <Outlet />
+     
     </>
   )
 }
