@@ -1,8 +1,11 @@
 
 import { NavLink } from "react-router-dom";
+import useAuth from "../Hooks/useAuth/useAuth";
+import Dropdown from "../Dropdown/Dropdown";
 
 
 const NavBar = () => {
+    const { user } = useAuth()
     const Links = <>
 
         <NavLink
@@ -21,14 +24,19 @@ const NavBar = () => {
         >
             Dashboard
         </NavLink>
-        <NavLink
-            to="/login"
-            className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "font-bold border-b-4 border-black" : "font-bold "
-            }
-        >
-            Login
-        </NavLink>
+        {
+            user ?
+                ""
+                :
+                <NavLink
+                    to="/login"
+                    className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "font-bold border-b-4 border-black" : "font-bold "
+                    }
+                >
+                    Login
+                </NavLink>
+        }
     </>
 
 
@@ -52,7 +60,13 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                {
+                    user ?
+                        <Dropdown />
+                        :
+                        ""
+
+                }
             </div>
         </div>
     );

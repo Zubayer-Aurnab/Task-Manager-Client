@@ -2,8 +2,24 @@ import Lottie from "lottie-react";
 import login from "../../../public/login.json"
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import useAuth from "../../Components/Hooks/useAuth/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
+    const { GoogleAuth, LogInUser,user } = useAuth()
+    const GoogleLogin = () => {
+        GoogleAuth()
+            .then(res => {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Login successful",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                console.log(user)
+            })
+    }
     const handleSubmitLogin = () => {
 
     }
@@ -61,7 +77,7 @@ const Login = () => {
                                             </button>
 
                                             <button
-                                                // onClick={GoogleLogin}
+                                                onClick={GoogleLogin}
 
                                                 className="w-full px-5 py-3 text-base font-medium text-center text-black bg-white rounded-lg hover:bg-white focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-white dark:hover:bg-white dark:focus:ring-white flex items-center justify-center gap-4 "
                                             >
