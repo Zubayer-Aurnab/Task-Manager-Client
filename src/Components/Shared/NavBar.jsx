@@ -21,6 +21,14 @@ const NavBar = () => {
         >
             Dashboard
         </NavLink>
+        <NavLink
+            to="/login"
+            className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "font-bold border-b-4 border-black" : "font-bold "
+            }
+        >
+            Login
+        </NavLink>
     </>
 
 
@@ -36,7 +44,7 @@ const NavBar = () => {
                         {Links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+                <a className="btn btn-ghost text-xl">Task Manager</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 space-x-5">
