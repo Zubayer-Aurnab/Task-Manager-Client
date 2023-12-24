@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 
 const Register = () => {
-    const { GoogleAuth,user } = useAuth()
+    const { GoogleAuth, createUser, UpdateUser } = useAuth()
     const GoogleLogin = () => {
         GoogleAuth()
             .then(res => {
@@ -21,7 +21,39 @@ const Register = () => {
                 console.log(user)
             })
     }
-    const handleSubmitRegister = () => {
+    const handelRegisterSubmit = e => {
+        e.preventDefault()
+        const from = e.target
+        const name = from.name.value
+        const email = from.email.value
+        const password = from.password.value
+        const photo = from.photo.value
+        console.log({ name, email, password, photo })
+        createUser(email, password)
+            .then(res => {
+                UpdateUser(name, photo)
+                    .then(res => {
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Registration successful",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            })
+            .catch(err => {
+                Swal.fire({
+                    icon: "error",
+                    title: `error: ${err.message}`,
+                    text: `error: ${err.message}`,
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                });
+            })
 
     }
     return (
@@ -44,7 +76,7 @@ const Register = () => {
                                         Register to  ContestHub
                                     </h2>
                                     <form
-                                        onSubmit={handleSubmitRegister}
+                                        onSubmit={handelRegisterSubmit}
                                         className="mt-8 space-y-6" action="#">
                                         <div>
                                             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"> Full Name</label>

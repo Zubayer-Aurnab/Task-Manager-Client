@@ -6,7 +6,7 @@ import useAuth from "../../Components/Hooks/useAuth/useAuth";
 import Swal from "sweetalert2";
 
 const Login = () => {
-    const { GoogleAuth, LogInUser,user } = useAuth()
+    const { GoogleAuth, LogInUser, user } = useAuth()
     const GoogleLogin = () => {
         GoogleAuth()
             .then(res => {
@@ -20,7 +20,32 @@ const Login = () => {
                 console.log(user)
             })
     }
-    const handleSubmitLogin = () => {
+    const handleSubmitLogin = (e) => {
+        e.preventDefault()
+        const from = e.target
+        const email = from.email.value
+        const password = from.password.value
+        console.log({ email, password })
+        LogInUser(email, password)
+            .then(res => {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Login successful",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                // navigate(location?.state ? location.state : '/')
+            })
+            .catch(err => {
+                Swal.fire({
+                    icon: "error",
+                    title: `error: ${err.message}`,
+                    text: `error: ${err.message}`,
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                });
+
+            })
 
     }
     return (

@@ -11,6 +11,9 @@ import Home from './Page/Home/Home.jsx';
 import Login from './Page/Login/Login.jsx';
 import Register from './Page/Register/Register.jsx';
 import AuthProvider from './Components/Hooks/AuthProvider/AuthProvider.jsx';
+import MyTask from './Page/Dashboard/MyTask/MyTask.jsx';
+import CreatedTask from './Page/Dashboard/CreateTask/CreateTask.jsx'
+import FinishedTask from './Page/Dashboard/FinishedTask/FinishedTask.jsx'
 
 const router = createBrowserRouter([
   {
@@ -23,7 +26,21 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <Dashboard />
+        element: <Dashboard />,
+        children: [
+          {
+            path: "/dashboard",
+            element: <MyTask />
+          },
+          {
+            path: "my-created",
+            element: <CreatedTask />
+          },
+          {
+            path: "finished",
+            element: <FinishedTask />
+          }
+        ]
       },
       {
         path: '/login',
