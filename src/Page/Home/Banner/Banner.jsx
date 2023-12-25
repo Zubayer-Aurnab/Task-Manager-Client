@@ -9,12 +9,12 @@ const Banner = () => {
             <div className="flex flex-col-reverse lg:flex-row gap-4 lg:pt-10">
                 <div className="flex-1 text-center ">
                     <div className="flex flex-col justify-center items-center space-y-2  h-full">
-                        <h1 className="text-2xl md:text-4xl">Manage</h1>
-                        <p className="text-lg md:text-2xl">Your Time and Work , With us</p>
+                        <h1 className="text-2xl md:text-6xl font-bold">Manage</h1>
+                        <p className="text-lg md:text-4xl font-bold">Your Time and Work , With us</p>
                         <div className="">
                             {
-                                user ? <Link to={'/dashboard'} className="btn bg-primary3 hover:bg-primary2 btn-sm ">Explore</Link> :
-                                    <Link to={'/login'} className="btn bg-primary3 hover:bg-primary2 btn-sm  ">Explore</Link>
+                                user ? <Link to={'/dashboard'} className="btn bg-primary3 hover:bg-primary2  ">Explore</Link> :
+                                    <Link to={'/login'} className="btn bg-primary3 hover:bg-primary2   ">Explore</Link>
 
                             }
 
@@ -22,7 +22,7 @@ const Banner = () => {
                     </div>
                 </div>
                 <div className="flex-1 ">
-                    <img src={BannerPhoto} className="" alt="" />
+                    <img src="https://www.cflowapps.com/wp-content/uploads/2018/07/task-management-process.png" className="" alt="" />
                 </div>
             </div>
 

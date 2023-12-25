@@ -16,14 +16,18 @@ const NavBar = () => {
         >
             Home
         </NavLink>
-        <NavLink
-            to="/dashboard"
-            className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? "font-bold border-b-4 border-black" : "font-bold "
-            }
-        >
-            Dashboard
-        </NavLink>
+        {
+            user ? <NavLink
+                to="/dashboard"
+                className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "font-bold border-b-4 border-black" : "font-bold "
+                }
+            >
+                Dashboard
+            </NavLink>
+                :
+                ""
+        }
         {
             user ?
                 ""
