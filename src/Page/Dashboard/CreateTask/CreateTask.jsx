@@ -1,7 +1,10 @@
+import axios from "axios";
+import Swal from "sweetalert2";
+import useAuth from "../../../Components/Hooks/useAuth/useAuth";
 
 
 const CreateTask = () => {
-
+    const { user } = useAuth()
     const handelCreateTask = (e) => {
         e.preventDefault();
         const form = e.target
@@ -9,7 +12,25 @@ const CreateTask = () => {
         const taskDescription = form.description.value
         const taskPriority = form.tag.value
         const time = form.date.value
-        console.log({ taskTitle, taskDescription, taskPriority, time })
+        const taskUser = user?.email
+        const status = "todo"
+        const Task = { taskTitle, taskDescription, taskPriority, time ,taskUser,status}
+        axios.post('http://localhost:5000/task', Task)
+            //  console.log(res)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Your work has been saved",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    form.reset()
+
+                }
+            })
     }
 
     return (
